@@ -12,13 +12,10 @@ pipeline {
 
         stage('Exec Maven commands') {
             steps {
-                dir('maven-examples/maven-example') {
-                    // Configure Maven project's repositories
-                    jf 'mvn-config --repo-resolve-releases cyber-maven-default --repo-resolve-snapshots cyber-maven-default --repo-deploy-releases cyber-maven-default --repo-deploy-snapshots cyber-maven-default'
-
-                    // Install and publish project
-                    jf 'mvn clean install'
-                }
+                // Configure Maven project's repositories
+                jf 'mvn-config --repo-resolve-releases cyber-maven-default --repo-resolve-snapshots cyber-maven-default --repo-deploy-releases cyber-maven-default --repo-deploy-snapshots cyber-maven-default'
+                // Install and publish project
+                jf 'mvn clean install'
             }
         }
 
